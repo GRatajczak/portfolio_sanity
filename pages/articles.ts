@@ -7,6 +7,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'language',
+      title: 'Language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       title: 'Image',

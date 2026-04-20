@@ -20,6 +20,13 @@ export default defineType({
   },
   fields: [
     defineField({
+      name: 'language',
+      title: 'Language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
+    defineField({
       name: 'name',
       type: 'string',
       title: 'Technology name',
