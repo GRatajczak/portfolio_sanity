@@ -48,11 +48,18 @@ export default defineType({
       rows: 3,
     }),
     defineField({
+      name: 'projectUrl',
+      type: 'url',
+      title: 'Project URL',
+      validation: (rule) => rule.uri({allowRelative: false, scheme: ['http', 'https']}),
+    }),
+    defineField({
       name: 'technologies',
       type: 'array',
       title: 'Technologies',
       of: [defineArrayMember({type: 'technologyReference'})],
     }),
+    
     defineField({
       name: 'images',
       type: 'array',

@@ -1,3 +1,4 @@
+import certificate from './certificate'
 import global from './global'
 import page from './page'
 import project from './project'
@@ -6,4 +7,4 @@ import articles from './articles'
 import categories from './categories'
 import locale from './locale'
 
-export default [page, global, project, technology, articles, categories, locale]
+export default [page, global, project, certificate, technology, articles, categories, locale]

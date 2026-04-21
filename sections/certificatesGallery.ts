@@ -8,7 +8,7 @@ export default defineType({
     select: {
       title: 'heading',
       subtitle: 'eyebrow',
-      media: 'certificates.0.image',
+      media: 'certificates.0.certificate.image',
     },
     prepare({title, subtitle, media}) {
       return {
@@ -35,47 +35,8 @@ export default defineType({
       name: 'certificates',
       type: 'array',
       title: 'Certificates',
-      of: [
-        defineArrayMember({
-          name: 'certificate',
-          type: 'object',
-          title: 'Certificate',
-          preview: {
-            select: {
-              title: 'title',
-              subtitle: 'issuer',
-              media: 'image',
-            },
-          },
-          fields: [
-            defineField({
-              name: 'title',
-              type: 'string',
-              title: 'Title',
-            }),
-            defineField({
-              name: 'issuer',
-              type: 'string',
-              title: 'Issuer',
-            }),
-            defineField({
-              name: 'image',
-              type: 'image',
-              title: 'Certificate image',
-              options: {
-                hotspot: true,
-              },
-              fields: [
-                defineField({
-                  name: 'alt',
-                  type: 'string',
-                  title: 'Alternative text',
-                }),
-              ],
-            }),
-          ],
-        }),
-      ],
+      description: 'Select certificates to display in this section.',
+      of: [defineArrayMember({type: 'certificateReference'})],
     }),
   ],
 })

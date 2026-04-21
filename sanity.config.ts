@@ -4,7 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {documentInternationalization} from '@sanity/document-internationalization'
 import {schemaTypes} from './schemaTypes'
 
-const localizedSchemaTypes = ['page', 'global', 'project', 'technology', 'articles', 'categories']
+const localizedSchemaTypes = ['page', 'global', 'project', 'certificate', 'technology', 'articles', 'categories']
 
 export default defineConfig({
   name: 'default',

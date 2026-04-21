@@ -1,7 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import header from '../components/header'
 import footer from '../components/footer'
-import certificates from '../components/certificates'
 
 export default defineType({
   name: 'global',
@@ -36,12 +35,6 @@ export default defineType({
       type: 'object',
       title: 'Footer',
       fields: [...footer.fields],
-    }),
-    defineField({
-      name: 'certificates',
-      type: 'object',
-      title: 'Certificates',
-      fields: [...certificates.fields],
     }),
     defineField({
       name: 'phone',

@@ -79,15 +79,6 @@ export type ProjectsShowcaseButton = {
   buttonLink?: string
 }
 
-export type CertificateImage = {
-  asset?: SanityImageAssetReference
-  media?: unknown // Unable to locate the referenced type "certificate.image.media" in schema
-  hotspot?: SanityImageHotspot
-  crop?: SanityImageCrop
-  alt?: string
-  _type: 'image'
-}
-
 export type Locale = {
   _id: string
   _type: 'locale'
@@ -124,18 +115,6 @@ export type ProjectReference_2 = {
   overrideLabel?: string
 }
 
-export type Certificates = {
-  _type: 'certificates'
-  certificatesArray?: Array<{
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-    _key: string
-  }>
-}
-
 export type Seo = {
   _type: 'seo'
   metaTitle?: string
@@ -167,6 +146,18 @@ export type Footer = {
       _key: string
     } & PageReference
   >
+}
+
+export type CertificateReference = {
+  _ref: string
+  _type: 'reference'
+  _weak?: boolean
+  [internalGroqTypeReferenceTo]?: 'certificate'
+}
+
+export type CertificateReference_2 = {
+  _type: 'certificateReference'
+  certificate: CertificateReference
 }
 
 export type Button = {
@@ -310,13 +301,11 @@ export type CertificatesGallery = {
   _type: 'certificatesGallery'
   eyebrow?: string
   heading: string
-  certificates?: Array<{
-    title?: string
-    issuer?: string
-    image?: CertificateImage
-    _type: 'certificate'
-    _key: string
-  }>
+  certificates?: Array<
+    {
+      _key: string
+    } & CertificateReference_2
+  >
 }
 
 export type AboutMe = {
@@ -396,6 +385,7 @@ export type InternationalizedArrayReferenceValue = {
     | PageReference
     | GlobalReference
     | ProjectReference
+    | CertificateReference
     | TechnologyReference
     | ArticlesReference
     | CategoriesReference
@@ -502,6 +492,52 @@ export type Technology = {
   }
 }
 
+export type Certificate = {
+  _id: string
+  _type: 'certificate'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  language?: string
+  title: string
+  slug: Slug
+  issuer?: string
+  issuedAt?: string
+  certificateUrl?: string
+  image: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    alt?: string
+    _type: 'image'
+  }
+  seo?: {
+    metaTitle?: string
+    metaDescription?: string
+    keywords?: string
+    openGraphImage?: OpenGraphImage
+  }
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
+}
+
 export type Project = {
   _id: string
   _type: 'project'
@@ -513,6 +549,7 @@ export type Project = {
   title: string
   slug: Slug
   description?: string
+  projectUrl?: string
   technologies?: Array<
     {
       _key: string
@@ -573,16 +610,6 @@ export type Global = {
         _key: string
       } & PageReference
     >
-  }
-  certificates?: {
-    certificatesArray?: Array<{
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      _type: 'image'
-      _key: string
-    }>
   }
   phone?: string
   email?: string
@@ -739,17 +766,17 @@ export type AllSanitySchemaTypes =
   | ProjectButton
   | ProjectImage
   | ProjectsShowcaseButton
-  | CertificateImage
   | Locale
   | TechnologyReference
   | TechnologyReference_2
   | ProjectReference
   | ProjectReference_2
-  | Certificates
   | Seo
   | PageReference
   | Header
   | Footer
+  | CertificateReference
+  | CertificateReference_2
   | Button
   | TechnologiesOverview
   | TechnologiesStack
@@ -771,6 +798,7 @@ export type AllSanitySchemaTypes =
   | SanityImageCrop
   | SanityImageHotspot
   | Technology
+  | Certificate
   | Project
   | Global
   | Page
