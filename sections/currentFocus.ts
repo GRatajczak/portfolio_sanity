@@ -4,16 +4,16 @@ import button from '../components/button'
 export default defineType({
   name: 'currentFocus',
   type: 'object',
-  title: 'Current Focus',
+  title: 'What I doing now?',
   preview: {
     select: {
       title: 'heading',
-      subtitle: 'project.title',
-      media: 'project.image',
+      subtitle: 'project.project.title',
+      media: 'project.project.images.0',
     },
     prepare({title, subtitle, media}) {
       return {
-        title: title || 'Current Focus',
+        title: title || 'What I doing now?',
         subtitle: subtitle || 'Current project section',
         media,
       }
@@ -38,51 +38,18 @@ export default defineType({
       title: 'Featured project',
       fields: [
         defineField({
-          name: 'category',
-          type: 'string',
-          title: 'Category',
-        }),
-        defineField({
-          name: 'title',
-          type: 'string',
-          title: 'Title',
+          name: 'project',
+          type: 'reference',
+          title: 'Project',
+          description: 'Select one project from added Projects documents.',
+          to: [{type: 'project'}],
           validation: (rule) => rule.required(),
-        }),
-        defineField({
-          name: 'description',
-          type: 'text',
-          title: 'Project description',
-          rows: 3,
-        }),
-        defineField({
-          name: 'technologies',
-          type: 'array',
-          title: 'Technologies',
-          of: [defineArrayMember({type: 'string'})],
-          options: {
-            layout: 'tags',
-          },
         }),
         defineField({
           name: 'button',
           type: 'object',
           title: 'Button',
           fields: [...button.fields],
-        }),
-        defineField({
-          name: 'image',
-          type: 'image',
-          title: 'Project image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-            }),
-          ],
         }),
       ],
     }),

@@ -3,7 +3,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 export default defineType({
   name: 'experienceTimeline',
   type: 'object',
-  title: 'Experience Timeline',
+  title: 'My timeline',
   preview: {
     select: {
       title: 'heading',
@@ -12,7 +12,7 @@ export default defineType({
     },
     prepare({title, subtitle, media}) {
       return {
-        title: title || 'Experience Timeline',
+        title: title || 'My timeline',
         subtitle: subtitle || 'Career history',
         media,
       }
@@ -75,10 +75,8 @@ export default defineType({
               name: 'technologies',
               type: 'array',
               title: 'Technologies',
-              of: [defineArrayMember({type: 'string'})],
-              options: {
-                layout: 'tags',
-              },
+              description: 'Select technologies from the Technologies page.',
+              of: [defineArrayMember({type: 'technologyReference'})],
             }),
             defineField({
               name: 'logo',

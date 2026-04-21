@@ -2,19 +2,19 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 import button from '../components/button'
 
 export default defineType({
-  name: 'aboutMe',
+  name: 'contactCta',
   type: 'object',
-  title: 'About me',
+  title: 'Contact CTA',
   preview: {
     select: {
       title: 'heading',
       subtitle: 'eyebrow',
-      media: 'images.0',
+      media: 'backgroundImage',
     },
     prepare({title, subtitle, media}) {
       return {
-        title: title || 'About me',
-        subtitle: subtitle || 'Profile section',
+        title: title || 'Contact CTA',
+        subtitle: subtitle || 'Call to action section',
         media,
       }
     },
@@ -24,7 +24,7 @@ export default defineType({
       name: 'eyebrow',
       type: 'string',
       title: 'Eyebrow',
-      description: 'Short label above the section heading, e.g. "A little".',
+      description: 'Short label above the section heading.',
     }),
     defineField({
       name: 'heading',
@@ -39,31 +39,31 @@ export default defineType({
       of: [defineArrayMember({type: 'block'})],
     }),
     defineField({
-      name: 'button',
+      name: 'primaryButton',
       type: 'object',
-      title: 'Button',
+      title: 'Primary button',
       fields: [...button.fields],
     }),
     defineField({
-      name: 'images',
-      type: 'array',
-      title: 'Image collage',
-      of: [
-        defineArrayMember({
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-          fields: [
-            defineField({
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-            }),
-          ],
+      name: 'secondaryButton',
+      type: 'object',
+      title: 'Secondary button',
+      fields: [...button.fields],
+    }),
+    defineField({
+      name: 'backgroundImage',
+      type: 'image',
+      title: 'Background image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
         }),
       ],
-      validation: (rule) => rule.max(3),
     }),
   ],
 })

@@ -3,7 +3,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 export default defineType({
   name: 'technologiesOverview',
   type: 'object',
-  title: 'Technologies Overview',
+  title: 'Technologies I use',
   preview: {
     select: {
       title: 'heading',
@@ -12,7 +12,7 @@ export default defineType({
     },
     prepare({title, subtitle, media}) {
       return {
-        title: title || 'Technologies Overview',
+        title: title || 'Technologies I use',
         subtitle: subtitle || 'Tech stack groups',
         media,
       }
