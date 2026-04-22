@@ -221,7 +221,7 @@ export type Subhero = {
 export type ProjectsShowcase = {
   _type: 'projectsShowcase'
   eyebrow?: string
-  heading: string
+  heading?: string
   button?: ProjectsShowcaseButton
   projects?: Array<
     {
@@ -354,6 +354,17 @@ export type ContactCta = {
     alt?: string
     _type: 'image'
   }
+}
+
+export type CertificatesGrid = {
+  _type: 'certificatesGrid'
+  eyebrow?: string
+  heading?: string
+  certificates?: Array<
+    {
+      _key: string
+    } & CertificateReference_2
+  >
 }
 
 export type CertificatesGallery = {
@@ -636,6 +647,7 @@ export type Global = {
   email?: string
   linkedin?: string
   instagram?: string
+  github?: string
 }
 
 export type Page = {
@@ -687,6 +699,9 @@ export type Page = {
     | ({
         _key: string
       } & CertificatesGallery)
+    | ({
+        _key: string
+      } & CertificatesGrid)
     | ({
         _key: string
       } & ContactCta)
@@ -873,6 +888,7 @@ export type AllSanitySchemaTypes =
   | ExperienceTimeline
   | CurrentFocus
   | ContactCta
+  | CertificatesGrid
   | CertificatesGallery
   | AboutMe
   | AboutBanner

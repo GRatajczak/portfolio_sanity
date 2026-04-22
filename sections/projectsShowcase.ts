@@ -28,7 +28,6 @@ export default defineType({
       name: 'heading',
       type: 'string',
       title: 'Heading',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'button',

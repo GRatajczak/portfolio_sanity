@@ -56,5 +56,10 @@ export default defineType({
       title: 'Instagram',
       type: 'string',
     }),
+    defineField({
+      name: 'github',
+      title: 'GitHub',
+      type: 'string',
+    }),
   ],
 })
