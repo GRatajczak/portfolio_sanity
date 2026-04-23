@@ -1,4 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
+import button from '../components/button'
 
 export default defineType({
   name: 'certificatesGallery',
@@ -30,6 +31,12 @@ export default defineType({
       type: 'string',
       title: 'Heading',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'button',
+      type: 'object',
+      title: 'Section button',
+      fields: [...button.fields],
     }),
     defineField({
       name: 'certificates',

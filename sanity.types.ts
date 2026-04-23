@@ -73,6 +73,13 @@ export type ProjectsShowcaseButton = {
   buttonLink?: string
 }
 
+export type CertificatesGalleryButton = {
+  buttonText?: string
+  isExternalLink?: boolean
+  isDownload?: boolean
+  buttonLink?: string
+}
+
 export type PrimaryButton = {
   buttonText?: string
   isExternalLink?: boolean
@@ -216,6 +223,28 @@ export type Subhero = {
   eyebrow?: string
   heading: string
   highlightLine?: boolean
+}
+
+export type RichTextSection = {
+  _type: 'richTextSection'
+  content: Array<{
+    children?: Array<{
+      marks?: Array<string>
+      text?: string
+      _type: 'span'
+      _key: string
+    }>
+    style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote'
+    listItem?: 'bullet' | 'number'
+    markDefs?: Array<{
+      href?: string
+      _type: 'link'
+      _key: string
+    }>
+    level?: number
+    _type: 'block'
+    _key: string
+  }>
 }
 
 export type ProjectsShowcase = {
@@ -371,6 +400,7 @@ export type CertificatesGallery = {
   _type: 'certificatesGallery'
   eyebrow?: string
   heading: string
+  button?: CertificatesGalleryButton
   certificates?: Array<
     {
       _key: string
@@ -698,6 +728,9 @@ export type Page = {
       } & ProjectsShowcase)
     | ({
         _key: string
+      } & RichTextSection)
+    | ({
+        _key: string
       } & CertificatesGallery)
     | ({
         _key: string
@@ -866,6 +899,7 @@ export type AllSanitySchemaTypes =
   | CurrentFocusProject
   | ProjectButton
   | ProjectsShowcaseButton
+  | CertificatesGalleryButton
   | PrimaryButton
   | SecondaryButton
   | Locale
@@ -882,6 +916,7 @@ export type AllSanitySchemaTypes =
   | TechnologiesOverview
   | TechnologiesStack
   | Subhero
+  | RichTextSection
   | ProjectsShowcase
   | Highlights
   | Hero

@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'aboutBanner',
@@ -27,9 +27,9 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      type: 'text',
+      type: 'array',
       title: 'Description',
-      rows: 6,
+      of: [defineArrayMember({type: 'block'})],
       validation: (rule) => rule.required(),
     }),
     defineField({
