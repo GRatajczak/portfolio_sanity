@@ -227,6 +227,7 @@ export type Subhero = {
 
 export type RichTextSection = {
   _type: 'richTextSection'
+  narrow?: boolean
   content: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -774,8 +775,9 @@ export type Project = {
   _rev: string
   language?: string
   category?: 'done' | 'going'
+  subtitle?: string
   title: string
-  slug: Slug
+  slug?: Slug
   description?: string
   projectUrl?: string
   technologies?: Array<

@@ -1157,6 +1157,13 @@
             "value": "richTextSection"
           }
         },
+        "narrow": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
+        },
         "content": {
           "type": "objectAttribute",
           "value": {
@@ -4817,6 +4824,13 @@
         },
         "optional": true
       },
+      "subtitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "title": {
         "type": "objectAttribute",
         "value": {
@@ -4830,7 +4844,7 @@
           "type": "inline",
           "name": "slug"
         },
-        "optional": false
+        "optional": true
       },
       "description": {
         "type": "objectAttribute",

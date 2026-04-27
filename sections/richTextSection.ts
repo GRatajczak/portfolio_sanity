@@ -17,6 +17,12 @@ export default defineType({
   },
   fields: [
     defineField({
+      name: 'narrow',
+      type: 'boolean',
+      title: 'Narrow',
+      initialValue: true,
+    }),
+    defineField({
       name: 'content',
       type: 'array',
       title: 'Content',
