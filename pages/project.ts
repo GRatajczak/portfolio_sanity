@@ -26,6 +26,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'subtitle',
+      type: 'string',
+      title: 'Subtitle',
+    }),
+    defineField({
       name: 'title',
       type: 'string',
       title: 'Title',
@@ -35,7 +40,6 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      validation: (rule) => rule.required(),
       options: {
         source: 'title',
         maxLength: 96,
