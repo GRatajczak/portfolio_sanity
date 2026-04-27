@@ -81,6 +81,121 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'sections',
+      type: 'array',
+      title: 'Sections repeater',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'section',
+          title: 'Section',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+              title: 'Title',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'content',
+              type: 'array',
+              title: 'Content',
+              of: [defineArrayMember({type: 'block'})],
+              validation: (rule) => rule.required().min(1),
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              subtitle: 'content.0.children.0.text',
+            },
+            prepare({title, subtitle}) {
+              return {
+                title: title || 'Untitled section',
+                subtitle: subtitle || 'No content yet',
+              }
+            },
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'pageBuilder',
+      type: 'array',
+      title: 'Page builder',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'textAndImage',
+          title: 'Text and image',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+              title: 'Title',
+            }),
+            defineField({
+              name: 'content',
+              type: 'array',
+              title: 'Content',
+              of: [defineArrayMember({type: 'block'})],
+            }),
+            defineField({
+              name: 'image',
+              type: 'image',
+              title: 'Image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                }),
+              ],
+            }),
+            defineField({
+              name: 'flip',
+              type: 'boolean',
+              title: 'Flip layout',
+              initialValue: false,
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              subtitle: 'content.0.children.0.text',
+              media: 'image',
+            },
+            prepare({title, subtitle, media}) {
+              return {
+                title: title || 'Text and image',
+                subtitle: subtitle || 'No content yet',
+                media,
+              }
+            },
+          },
+        }),
+        defineArrayMember({
+          type: 'image',
+          name: 'image',
+          title: 'Image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            }),
+          ],
+        }),
+        defineArrayMember({type: 'richTextSection'}),
+      ],
+    }),
+    defineField({
       name: 'seo',
       type: 'object',
       title: 'SEO',
