@@ -182,6 +182,55 @@ export default defineType({
           },
         }),
         defineArrayMember({
+          type: 'object',
+          name: 'twoImages',
+          title: 'Two images',
+          fields: [
+            defineField({
+              name: 'leftImage',
+              type: 'image',
+              title: 'Left image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                }),
+              ],
+            }),
+            defineField({
+              name: 'rightImage',
+              type: 'image',
+              title: 'Right image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                }),
+              ],
+            }),
+          ],
+          preview: {
+            select: {
+              media: 'leftImage',
+            },
+            prepare({media}) {
+              return {
+                title: 'Two images',
+                subtitle: 'Left and right image section',
+                media,
+              }
+            },
+          },
+        }),
+        defineArrayMember({
           type: 'image',
           name: 'image',
           title: 'Image',

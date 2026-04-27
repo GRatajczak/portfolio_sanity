@@ -851,6 +851,26 @@ export type Project = {
         _key: string
       }
     | {
+        leftImage?: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          _type: 'image'
+        }
+        rightImage?: {
+          asset?: SanityImageAssetReference
+          media?: unknown
+          hotspot?: SanityImageHotspot
+          crop?: SanityImageCrop
+          alt?: string
+          _type: 'image'
+        }
+        _type: 'twoImages'
+        _key: string
+      }
+    | {
         asset?: SanityImageAssetReference
         media?: unknown
         hotspot?: SanityImageHotspot
