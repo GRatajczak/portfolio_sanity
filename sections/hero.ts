@@ -66,5 +66,20 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'mobileImage',
+      type: 'image',
+      title: 'Mobile image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+        }),
+      ],
+    }),
   ],
 })
